@@ -1,0 +1,67 @@
+body{
+	margin-left: 50px;
+	margin-top: 30px;
+}
+
+#search_tab{
+	text-align: center;
+}
+
+#logo{
+	color: red;
+	font-size: 16px;
+	font-style: italic;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+#result{
+	margin-left: 50px;
+	margin-top: 50px;
+	font-family: sans-serif;
+}
+#word{
+	font-size: 24px;
+	font-family: monospace;
+	font-weight: bold;
+}
+
+.level0{
+	margin-left: 10px;
+}
+
+.level1{
+	margin-left: 20px;
+}
+
+.level2{
+	margin-left: 30px;
+}
+
+.number {
+	font-weight: normal;
+}
+
+.pomet {
+	font-style: italic;
+	font-weight: bold;
+	color: green;
+}
+
+.comment {
+	font-style: italic;
+}
+
+.translate{
+	font-style: normal;
+	font-weight: bold;
+}
+
+.example {
+	color: grey;
+}
+
+.origin{
+	font-weight: normal;
+	font-style: italic;
+}
