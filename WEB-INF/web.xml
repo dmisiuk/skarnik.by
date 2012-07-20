@@ -4,4 +4,30 @@
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
+
+	<context-param>
+		<param-name>jdbcDriverName</param-name>
+		<param-value>org.postgresql.Driver</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>jdbcUrl</param-name>
+		<param-value>jdbc:postgresql://localhost:5432/skarnik</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>jdbcUser</param-name>
+		<param-value>testuser</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>jdbcPassword</param-name>
+		<param-value>1234</param-value>
+	</context-param>
+
+	<listener>
+		<listener-name>Init DB connection</listener-name>
+		<listener-class>by.minsler.skarnik.db.ConnectionInit</listener-class>
+	</listener>
+
 </web-app>
