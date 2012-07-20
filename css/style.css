@@ -1,7 +1,50 @@
-body{
-	margin-left: 50px;
-	margin-top: 30px;
+* {
+	margin: 0;
 }
+
+html,body,#container{
+	height: 100%;
+}
+
+body > #container {
+	height: auto;
+	min-height: 100%;
+}
+
+#content{
+	z-index: 0;
+	padding-bottom: 40px;
+	padding-top: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+#header{
+	height: 40px;
+	margin-bottom: -50px;
+	padding-right: 10px;
+	padding-top: 10px;
+
+	position:relative;
+	z-index: 10;
+	text-align: right;
+	font-family: "Open Sans", "lucida grande", "Segoe UI", arial, verdana, "lucida sans unicode", tahoma, sans-serif;
+	font-size: 13px;
+	color: #2281CF;
+}
+
+#footer{
+	clear: both;
+	position: relative;
+	z-index: 10;
+	height: 40px;
+	margin-top: -40px;
+	text-align: center;
+	font-family: "Open Sans", "lucida grande", "Segoe UI", arial, verdana, "lucida sans unicode", tahoma, sans-serif;
+	font-size: 13px;
+	color: ##767676;
+}
+
 
 #search_tab{
 	text-align: center;

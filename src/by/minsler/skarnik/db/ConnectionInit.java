@@ -11,8 +11,8 @@ import javax.servlet.ServletContext;
 
 public class ConnectionInit implements ServletContextListener{
 
-	private Connection connection = null;
-	private ServletContext context = null;
+	private static Connection connection = null;
+	private static ServletContext context = null;
 
 	public void contextInitialized(ServletContextEvent event){
 		context = event.getServletContext();
@@ -44,5 +44,9 @@ public class ConnectionInit implements ServletContextListener{
 				context.log("sql exception: " + e);
 			}
 		}
+	}
+
+	public static Connection getConnection(){
+		return connection;
 	}
 }

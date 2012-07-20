@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
 	<display-name>skarnik.by</display-name>
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
 	<context-param>
@@ -25,9 +25,28 @@
 		<param-value>1234</param-value>
 	</context-param>
 
+	<context-param>
+		<param-name>logFileProperties</param-name>
+		<param-value>WEB-INF/log4j.properties</param-value>
+	</context-param>
+
 	<listener>
 		<listener-name>Init DB connection</listener-name>
 		<listener-class>by.minsler.skarnik.db.ConnectionInit</listener-class>
 	</listener>
+
+	<listener>
+		<listener-name>Init Log4j</listener-name>
+		<listener-class>by.minsler.skarnik.log.Log4jInit</listener-class>
+	</listener>	
+
+	<servlet>
+		<servlet-name>AdminController</servlet-name>
+		<servlet-class>by.minsler.skarnik.controller.AdminController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminController</servlet-name>
+		<url-pattern>/admin</url-pattern>
+	</servlet-mapping>
 
 </web-app>
