@@ -15,7 +15,7 @@
 				<form  action="result.jsp"> 
 					<span id="logo"> SKARNIK</span>
 					<input type="text" name="text" value="" size="70">
-					<input type="submit" name="search" value="перевести">
+					<input type="submit" value="перевести">
 				</form>
 			</div>
 		</div>

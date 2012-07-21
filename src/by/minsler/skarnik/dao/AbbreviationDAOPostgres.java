@@ -37,7 +37,21 @@ public class AbbreviationDAOPostgres implements AbbreviationDAO{
 	public Abbreviation getAbbreviation(String shortName){
 		return new Abbreviation();
 	}
-	public boolean addAbbreviation(Abbreviation abbreviation){
+	public boolean addAbbreviation(Abbreviation abbr){
+		int result = 0;
+		try{
+			Statement addStatement = connection.createStatement();
+			String query = "insert into abbreviations(short_name,full_name) values('" 
+				 + abbr.getShortName() +"','" + abbr.getFullName() + "')";
+			result = addStatement.executeUpdate(query);
+			result = 1;
+		} catch(SQLException e){
+			logger.error("sql: add abbreviation : " + e);
+		} 
+		if(result == 1){
+			logger.info("added abbreviation");
+			return true;
+		}
 		return false;
 	}
 
@@ -50,12 +64,38 @@ public class AbbreviationDAOPostgres implements AbbreviationDAO{
 				Abbreviation abbr = new Abbreviation();
 				abbr.setId(result.getInt("id"));
 				abbr.setShortName(result.getString("short_name"));
-				abbr.setFulltName(result.getString("full_name"));
+				abbr.setFullName(result.getString("full_name"));
 				list.add(abbr);
 			}
 		} catch(SQLException e){
 			logger.error("sql exception: " + e);
 		} 
 		return list;
+	}
+
+	public int deleteAll(){
+		int result = 0;
+		String query = "delete from abbreviations";
+		try{
+			Statement deleteAllStatement = connection.createStatement();
+			result = deleteAllStatement.executeUpdate(query);
+			logger.info("deleted " + result + " abbreviation(s)");
+		} catch(SQLException e){
+			logger.error("sql: delete all abbreviation: " + e);
+		}
+		return result;
+	}
+
+	public int delete(int id){
+		int result = 0;
+		String query = "delete from abbreviations where id=" + id;
+		try{
+			Statement deleteStatement = connection.createStatement();
+			result = deleteStatement.executeUpdate(query);
+			logger.info("deleted " + result + " abbreviation(s)");
+		} catch(SQLException e){
+			logger.error("sql: delete abbreviation: " + e);
+		}
+		return result;
 	}
 }

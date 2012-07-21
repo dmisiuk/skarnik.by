@@ -13,7 +13,7 @@ public class Abbreviation{
 		this.shortName = shortName;
 	}
 
-	public void setFulltName(String fullName){
+	public void setFullName(String fullName){
 		this.fullName = fullName;
 	}
 

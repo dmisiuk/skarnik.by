@@ -17,6 +17,8 @@
 			<form action="abbreviation" method="post" accept-charset="utf-8">
 				<input type="submit" name="newButton" value="new">
 				<input type="submit" name="showAllButton" value="Show all">
+				<input type="submit" name="deleteAllButton" value="Delete all">
+				<input type="submit" name="deleteButton" value="Init from dsl file">
 			</form>	
 		</div>
 	</div>

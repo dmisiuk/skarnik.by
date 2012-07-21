@@ -13,6 +13,12 @@
 
 		<div id="content">
 			<h1>New</h1>
+			<form action="abbreviation" method="post">
+				Abberivation info:
+				<br>Short Name: <input type="text" name="shortName">
+				<br>Full Name: <input type="text" name="fullName">
+				<br><input type="submit" name="createButton" >
+			</form>
 		</div>
 	</div>
 	<jsp:include page="/template/footer.jsp" />

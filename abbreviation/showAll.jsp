@@ -14,20 +14,51 @@
 	<div id="container">
 
 		<div id="content">
+
+			<div id="flash" >
+				<% 
+				String flash = (String) request.getAttribute("flash");
+				if(flash != null){
+				%>
+				<p><%= flash %>
+				<% } %>
+			</div>
 			<h1>Show all</h1>
 			<%
 
-			AbbreviationDAOPostgres abbrdao = AbbreviationDAOPostgres.getInstance();
-			ArrayList<Abbreviation> list = abbrdao.getAbbreviations();
-
+			ArrayList<Abbreviation> list = (ArrayList<Abbreviation>) request.getAttribute("listAbbreviation");
 			Iterator it = list.iterator();
 			%>
-			<ul>
-				<% while(it.hasNext()){ 
-				Abbreviation abbr = (Abbreviation) it.next(); %>
-				<li>ID: <%=  abbr.getId() %> ShortName: <%=  abbr.getShortName() %> FullName: <%=  abbr.getFullName() %> </li>
-				<% }%>
-			</ul>
+				<table border="1">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Short Name</th>
+							<th>Full Name</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% while(it.hasNext()){ 
+						Abbreviation abbr = (Abbreviation) it.next(); %>
+						<tr>
+							<td><%=  abbr.getId() %></td>
+							<td><%=  abbr.getShortName() %> </td>
+							<td><%=  abbr.getFullName() %> </td>
+							<td>
+								<form action="abbreviation" method="post">
+								<input type="hidden" name="id" value="<%=  abbr.getId() %>"> 
+								<input type="submit" name="deleteButton" value="delete">
+								</form>
+							</td>
+						</tr>
+						<% }%>
+					</tbody>
+				</table>						
+				
+		
+			<form action="abbreviation" method="post">
+				<input type="submit" name="newButton" value="New">
+			</form>
 			
 
 

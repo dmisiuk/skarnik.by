@@ -9,4 +9,6 @@ public interface AbbreviationDAO{
 	Abbreviation getAbbreviation(String shortName);
 	boolean addAbbreviation(Abbreviation abbreviation);
 	ArrayList<Abbreviation> getAbbreviations();
+	int deleteAll();
+	int delete(int id);
 }

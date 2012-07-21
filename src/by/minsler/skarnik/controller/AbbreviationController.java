@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import org.apache.log4j.Logger;
+import by.minsler.skarnik.helper.AbbreviationHelper;
 
 public class AbbreviationController extends HttpServlet {
 
@@ -17,11 +18,28 @@ public class AbbreviationController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		String urlView = null;
-		if(request.getParameter("showButton") != null){
+		if(request.getParameter("deleteButton") != null){
+			AbbreviationHelper.delete(request);
+			logger.info("invoked AbbreviationHelper.delete");
+			AbbreviationHelper.getAll(request);
+			urlView = "abbreviation/showAll.jsp";
+		} else if(request.getParameter("deleteAllButton") != null){
+			AbbreviationHelper.deleteAll(request);
+			AbbreviationHelper.getAll(request);
+			logger.info("invoked AbbreviationHelper.deleteAll");
+			urlView = "abbreviation/showAll.jsp";
+		} else if(request.getParameter("createButton") != null){
+			AbbreviationHelper.create(request);
+			logger.info("invoked AbbreviationHelper.create()");
+			AbbreviationHelper.getAll(request);
+			logger.info("invoked AbbreviationHelper.geetAll()");
+			urlView = "abbreviation/showAll.jsp";
+		} else if(request.getParameter("showButton") != null){
 			urlView = "abbreviation/show.jsp";
 		} else if(request.getParameter("newButton") != null){
 			urlView = "abbreviation/new.jsp";
 		} else{
+			AbbreviationHelper.getAll(request);
 			urlView = "abbreviation/showAll.jsp";
 		}
 		 

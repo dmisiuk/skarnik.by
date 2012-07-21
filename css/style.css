@@ -11,6 +11,11 @@ body > #container {
 	min-height: 100%;
 }
 
+#flash{
+	color:creen;
+	background-color: rgb(240,220,212); 
+}
+
 #content{
 	z-index: 0;
 	padding-bottom: 40px;
