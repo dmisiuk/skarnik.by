@@ -49,4 +49,13 @@
 		<url-pattern>/admin</url-pattern>
 	</servlet-mapping>
 
+		<servlet>
+		<servlet-name>AbbreviationController</servlet-name>
+		<servlet-class>by.minsler.skarnik.controller.AbbreviationController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AbbreviationController</servlet-name>
+		<url-pattern>/abbreviation</url-pattern>
+	</servlet-mapping>
+
 </web-app>

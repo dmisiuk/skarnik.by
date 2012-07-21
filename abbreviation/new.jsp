@@ -3,7 +3,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>Admin: main page</title>
+	<title>Abbreviation: new</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="css/style.css">
 </head>
@@ -12,12 +12,7 @@
 	<div id="container">
 
 		<div id="content">
-			<h1>Hello, admin</h1>
-			<h2>Abbreviation:</h2>
-			<form action="abbreviation" method="post" accept-charset="utf-8">
-				<input type="submit" name="newButton" value="new">
-				<input type="submit" name="showAllButton" value="Show all">
-			</form>	
+			<h1>New</h1>
 		</div>
 	</div>
 	<jsp:include page="/template/footer.jsp" />
