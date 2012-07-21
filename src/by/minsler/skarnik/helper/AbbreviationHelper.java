@@ -82,9 +82,10 @@ public class AbbreviationHelper{
 		AbbreviationParser parser = new AbbreviationParser(file);
 		logger.info("create parser ");
 		while(parser.next()){
-			abbrdao.addAbbreviation(parser.getAbbreviation());
-			logger.debug("added abbreviation " + parser.getAbbreviation().getShortName());
-			count++;
+			if(abbrdao.addAbbreviation(parser.getAbbreviation())){
+				logger.debug("added abbreviation " + parser.getAbbreviation().getShortName());
+				count++;
+			}
 		}
 		parser.close();
 		logger.info("close parser ");
