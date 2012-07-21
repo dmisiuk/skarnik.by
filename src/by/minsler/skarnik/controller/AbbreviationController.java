@@ -34,8 +34,10 @@ public class AbbreviationController extends HttpServlet {
 			AbbreviationHelper.getAll(request);
 			logger.info("invoked AbbreviationHelper.geetAll()");
 			urlView = "abbreviation/showAll.jsp";
-		} else if(request.getParameter("showButton") != null){
-			urlView = "abbreviation/show.jsp";
+		} else if(request.getParameter("initButton") != null){
+			AbbreviationHelper.init(request);
+			AbbreviationHelper.getAll(request);
+			urlView = "abbreviation/showAll.jsp";
 		} else if(request.getParameter("newButton") != null){
 			urlView = "abbreviation/new.jsp";
 		} else{

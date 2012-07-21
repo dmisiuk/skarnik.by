@@ -30,6 +30,11 @@
 		<param-value>WEB-INF/log4j.properties</param-value>
 	</context-param>
 
+	<context-param>
+			<param-name>abbreviationDSLFile</param-name>
+			<param-value>WEB-INF/dsl/UniversalRB_abrv.dsl</param-value>
+	</context-param>
+	
 	<listener>
 		<listener-name>Init DB connection</listener-name>
 		<listener-class>by.minsler.skarnik.db.ConnectionInit</listener-class>
@@ -49,7 +54,7 @@
 		<url-pattern>/admin</url-pattern>
 	</servlet-mapping>
 
-		<servlet>
+	<servlet>
 		<servlet-name>AbbreviationController</servlet-name>
 		<servlet-class>by.minsler.skarnik.controller.AbbreviationController</servlet-class>
 	</servlet>

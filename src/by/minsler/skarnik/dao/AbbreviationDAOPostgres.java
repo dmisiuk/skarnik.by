@@ -49,7 +49,7 @@ public class AbbreviationDAOPostgres implements AbbreviationDAO{
 			logger.error("sql: add abbreviation : " + e);
 		} 
 		if(result == 1){
-			logger.info("added abbreviation");
+			logger.debug("added abbreviation");
 			return true;
 		}
 		return false;
@@ -75,11 +75,11 @@ public class AbbreviationDAOPostgres implements AbbreviationDAO{
 
 	public int deleteAll(){
 		int result = 0;
-		String query = "delete from abbreviations";
+		String query = "truncate table abbreviations";
 		try{
 			Statement deleteAllStatement = connection.createStatement();
 			result = deleteAllStatement.executeUpdate(query);
-			logger.info("deleted " + result + " abbreviation(s)");
+			logger.info("table truncated");
 		} catch(SQLException e){
 			logger.error("sql: delete all abbreviation: " + e);
 		}
