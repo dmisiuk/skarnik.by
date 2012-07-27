@@ -1,3 +1,1 @@
-WEB-INF/classes/*
-WEB-INF/log/*
-WEB-INF/dsl/*
+/target
