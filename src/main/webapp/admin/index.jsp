@@ -19,6 +19,14 @@
 				<input type="submit" name="showAllButton" value="Show all">
 				<input type="submit" name="deleteAllButton" value="Delete all">
 				<input type="submit" name="initButton" value="Init from dsl file">
+			</form>
+			<br>
+			<h2>Card:</h2>
+			<form action="card" method="post" accept-charset="utf-8">
+				<!-- <input type="submit" name="newButton" value="new">
+				<input type="submit" name="showAllButton" value="Show all">
+				<input type="submit" name="deleteAllButton" value="Delete all"> -->
+				<input type="submit" name="initButton" value="Init from dsl file">
 			</form>	
 		</div>
 	</div>

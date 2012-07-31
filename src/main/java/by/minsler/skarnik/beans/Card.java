@@ -11,11 +11,11 @@ public class Card {
 	private int translateId;
 
 	public Card(boolean autoId) {
-		if (autoId) {
-			synchronized (o) {
-				id = nextId++;
-			}
-		}
+		// if (autoId) {
+		// synchronized (o) {
+		id = nextId++;
+		// }
+		// }
 	}
 
 	public Card() {

@@ -10,12 +10,17 @@ public class WordParser {
 
 	private static Logger logger = Logger.getLogger(WordParser.class);
 
-	public static int getWordId(String line) {
+	private WordDAO wordDao;
+
+	public WordParser() {
+		wordDao = WordDAOPostgres.getInstance();
+	}
+
+	public int getWordId(String line) {
 		int result = -1;
 		String text = line.trim();
 		Word word = new Word(true);
 		word.setText(text);
-		WordDAO wordDao = WordDAOPostgres.getInstance();
 		wordDao.addWord(word);
 		return word.getId();
 	}

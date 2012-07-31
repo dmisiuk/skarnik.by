@@ -8,11 +8,11 @@ public class Translate {
 	private int id;
 
 	public Translate(boolean autoId) {
-		if (autoId) {
-			synchronized (o) {
-				id = nextId++;
-			}
-		}
+		// if (autoId) {
+		// synchronized (o) {
+		id = nextId++;
+		// }
+		// }
 	}
 
 	public Translate() {

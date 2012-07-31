@@ -15,6 +15,8 @@ import by.minsler.skarnik.beans.Card;
 import by.minsler.skarnik.beans.Translate;
 import by.minsler.skarnik.dao.CardDAO;
 import by.minsler.skarnik.dao.CardDAOPostgres;
+import by.minsler.skarnik.dao.TranslateDAO;
+import by.minsler.skarnik.dao.TranslateDAOPostgres;
 
 public class CardParser {
 
@@ -44,28 +46,42 @@ public class CardParser {
 
 	public void parse() {
 		CardDAO cardDao = CardDAOPostgres.getInstance();
+		TranslateDAO translateDao = TranslateDAOPostgres.getInstance();
+		LineParser lineParser = new LineParser();
+		WordParser wordParser = new WordParser();
 
+		Translate translate = new Translate(true);
 		List<Integer> wordIds = new ArrayList<Integer>();
+		boolean end = false;
 
 		String l;
 		try {
 			while ((l = br.readLine()) != null) {
-				Translate translate = new Translate(true);
-				int tranlateId = translate.getId();
 				if (!(l.trim().equals("") || l.trim().startsWith("#"))) {
-					while ((l = br.readLine()) != null && !l.startsWith("\t")) {
-						wordIds.add(WordParser.getWordId(l));
-					}
-					while ((l = br.readLine()) != null && l.startsWith("\t")) {
-						LineParser.parse(l, tranlateId);
-					}
-					for (Integer wordId : wordIds) {
-						Card card = new Card(true);
-						card.setWordId(wordId);
-						card.setTranslateId(tranlateId);
-						cardDao.addCard(card);
-					}
 
+					if (!l.startsWith("\t")) {
+
+						if (end) {
+
+							translateDao.addTranslate(translate);
+							for (Integer wordId : wordIds) {
+								Card card = new Card(true);
+								card.setWordId(wordId);
+								card.setTranslateId(translate.getId());
+								cardDao.addCard(card);
+							}
+
+							wordIds.clear();
+							translate = new Translate(true);
+							end = false;
+						}
+
+						wordIds.add(wordParser.getWordId(l));
+
+					} else {
+						end = true;
+						lineParser.parse(l, translate.getId());
+					}
 				}
 			}
 		} catch (IOException e) {

@@ -10,11 +10,11 @@ public class Word {
 	private String text;
 
 	public Word(boolean autoId) {
-		if (autoId) {
-			synchronized (o) {
-				id = nextId++;
-			}
-		}
+		// if (autoId) {
+		// synchronized (o) {
+		id = nextId++;
+		// }
+		// }
 	}
 
 	public Word() {

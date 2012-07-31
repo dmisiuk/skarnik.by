@@ -3,13 +3,12 @@ package by.minsler.skarnik.dao;
 import java.util.ArrayList;
 
 import by.minsler.skarnik.beans.Translate;
-import by.minsler.skarnik.beans.Word;
 
 public interface TranslateDAO {
 
 	ArrayList<Translate> getTranslates();
 
-	Word getTranslate(int id);
+	Translate getTranslate(int id);
 
 	boolean addTranslate(Translate translate);
 

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import org.apache.log4j.Logger;
 
 import by.minsler.skarnik.beans.Translate;
-import by.minsler.skarnik.beans.Word;
 import by.minsler.skarnik.db.ConnectionInit;
 
 public class TranslateDAOPostgres implements TranslateDAO {
@@ -17,7 +16,7 @@ public class TranslateDAOPostgres implements TranslateDAO {
 	private static Logger logger = Logger.getLogger(TranslateDAOPostgres.class);
 
 	private static TranslateDAOPostgres inst;
-	private Connection connection = ConnectionInit.getConnection();
+	private Connection connection = null;
 	private String addTranslateQuery = "insert into translates (id) values(?)";
 	private String getTranslateQuery = "select * from translates where id = ?";
 	private PreparedStatement addTranslateStatement;
@@ -56,7 +55,7 @@ public class TranslateDAOPostgres implements TranslateDAO {
 	}
 
 	@Override
-	public Word getTranslate(int id) {
+	public Translate getTranslate(int id) {
 		Translate translate = null;
 
 		try {
@@ -69,7 +68,7 @@ public class TranslateDAOPostgres implements TranslateDAO {
 		} catch (SQLException e) {
 			logger.error("get translate from db: " + e);
 		}
-		return null;
+		return translate;
 	}
 
 	@Override
