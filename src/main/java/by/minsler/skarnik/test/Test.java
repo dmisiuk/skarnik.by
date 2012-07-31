@@ -73,6 +73,8 @@ public class Test {
 
 	public static ArrayList<StringBuilder> parseNode(String text) {
 
+		// не определяет [/lang][/com] [c][p]
+
 		ArrayList<StringBuilder> nodes = new ArrayList<StringBuilder>();
 		StringBuilder s = new StringBuilder();
 		int number = 0;
