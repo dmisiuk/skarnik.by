@@ -37,7 +37,7 @@
 	
 	<context-param>
 			<param-name>DSLFile</param-name>
-			<param-value>WEB-INF/dsl/UniversalRB_test.dsl</param-value>
+			<param-value>WEB-INF/dsl/UniversalRB.dsl</param-value>
 	</context-param>
 	
 	<listener>

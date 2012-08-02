@@ -9,14 +9,14 @@ public class Node {
 
 	private int tagId;
 
-	private static int lineId;
+	private int lineId;
 
-	public static int getLineId() {
+	public int getLineId() {
 		return lineId;
 	}
 
-	public static void setLineId(int lineId) {
-		Node.lineId = lineId;
+	public void setLineId(int lineId) {
+		this.lineId = lineId;
 	}
 
 	public Node() {

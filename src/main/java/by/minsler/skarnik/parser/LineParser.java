@@ -18,7 +18,9 @@ public class LineParser {
 		// parse node in line and add to db
 		//
 
+		text = text.trim();
 		Line line = new Line(true);
+		NodeParser nodeParser = new NodeParser();
 		line.setTranslateId(translateId);
 		int level = getLevel(text);
 		line.setLevel(level);
@@ -28,7 +30,8 @@ public class LineParser {
 		} else if (level > 1) {
 			text = text.substring(11, text.length() - 13);
 		}
-		NodeParser.parse(text, line.getId());
+
+		nodeParser.parse(text, line.getId());
 
 	}
 
