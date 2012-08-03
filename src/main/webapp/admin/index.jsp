@@ -27,7 +27,16 @@
 				<input type="submit" name="showAllButton" value="Show all">
 				<input type="submit" name="deleteAllButton" value="Delete all"> -->
 				<input type="submit" name="initButton" value="Init from dsl file">
+			</form>
+			<br>
+			<h2>Article:</h2>
+			<form action="article" method="post" accept-charset="utf-8">
+				<!-- <input type="submit" name="newButton" value="new">
+				<input type="submit" name="showAllButton" value="Show all">
+				<input type="submit" name="deleteAllButton" value="Delete all"> -->
+				<input type="submit" name="initButton" value="Init from xdxf file">
 			</form>	
+			
 		</div>
 	</div>
 	<jsp:include page="/template/footer.jsp" />

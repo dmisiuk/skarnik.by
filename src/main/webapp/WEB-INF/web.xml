@@ -40,6 +40,12 @@
 			<param-value>WEB-INF/dsl/UniversalRB.dsl</param-value>
 	</context-param>
 	
+	<context-param>
+			<param-name>xdxffile</param-name>
+			<param-value>WEB-INF/dsl/ru-bel-span.xdxf</param-value>
+	</context-param>
+	
+	
 	<listener>
 		<display-name>Init DB connection</display-name>
 		<listener-class>by.minsler.skarnik.db.ConnectionInit</listener-class>
@@ -75,6 +81,24 @@
 	<servlet-mapping>
 		<servlet-name>CardController</servlet-name>
 		<url-pattern>/card</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ArticleController</servlet-name>
+		<servlet-class>by.minsler.skarnik.controller.ArticleController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ArticleController</servlet-name>
+		<url-pattern>/article</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>TranslateController</servlet-name>
+		<servlet-class>by.minsler.skarnik.controller.TranslateController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TranslateController</servlet-name>
+		<url-pattern>/translate</url-pattern>
 	</servlet-mapping>
 
 </web-app>

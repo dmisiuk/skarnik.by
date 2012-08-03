@@ -8,11 +8,11 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<jsp:include page="/template/header.jsp" />
+	<jsp:include page="/WEB-INF/template/header.jsp" />
 	<div id="container">
 		<div id="content">
 			<div id="search_tab">
-				<form  action="result.jsp"> 
+				<form  action="translate"> 
 					<span id="logo"> SKARNIK</span>
 					<input type="text" name="text" value="" size="70">
 					<input type="submit" value="перевести">
@@ -20,6 +20,6 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="/template/footer.jsp" />
+	<jsp:include page="/WEB-INF/template/footer.jsp" />
 </body>
 </html>

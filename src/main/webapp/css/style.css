@@ -11,6 +11,10 @@ body > #container {
 	min-height: 100%;
 }
 
+body{
+	font-size: 16px;
+}
+
 #flash{
 	color:creen;
 	background-color: rgb(240,220,212); 
@@ -67,48 +71,62 @@ body > #container {
 	margin-top: 50px;
 	font-family: sans-serif;
 }
-#word{
-	font-size: 24px;
-	font-family: monospace;
-	font-weight: bold;
-}
-
-.level0{
-	margin-left: 10px;
-}
-
-.level1{
-	margin-left: 20px;
-}
-
-.level2{
-	margin-left: 30px;
-}
-
-.number {
-	font-weight: normal;
-}
-
-.pomet {
-	font-style: italic;
-	font-weight: bold;
-	color: green;
-}
-
-.comment {
-	font-style: italic;
-}
-
-.translate{
-	font-style: normal;
-	font-weight: bold;
-}
-
-.example {
-	color: grey;
-}
-
 .origin{
 	font-weight: normal;
 	font-style: italic;
+}
+
+
+
+
+div.article{
+	margin-left: 50px;
+	margin-top: 50px;
+}
+
+.boldertext{
+	font-weight: bold;
+}
+
+.key{
+
+	font-weight: bolder;
+	font-size: 24px;
+	margin: 10px;
+}
+
+.def{
+
+}
+
+.italictext{
+	font-style: italic;
+}
+
+.abr{
+
+	color: green;
+}
+
+.dtrn{
+	font-weight: bold;
+	font-size: 20px;
+}
+
+div.level1{
+	margin-left: 20px;
+}
+
+
+
+div.level2{
+	margin-left: 40px;
+}
+
+div.level3{
+	margin-left: 60px;
+}
+
+.example{
+	color: grey;
 }
