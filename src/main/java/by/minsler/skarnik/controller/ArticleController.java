@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import by.minsler.skarnik.parser.ArticleParser;
+
 public class ArticleController extends HttpServlet {
 
 	@Override
@@ -19,8 +21,8 @@ public class ArticleController extends HttpServlet {
 		String homeDir = getServletContext().getRealPath("/");
 		File file = new File(homeDir, fileName);
 		// risk. uncomment for initialize database
-		// ArticleParser parser = new ArticleParser(file);
-		// parser.initDB();
+		ArticleParser parser = new ArticleParser(file);
+		parser.initDB();
 
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();

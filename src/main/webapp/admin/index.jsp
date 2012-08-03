@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<jsp:include page="/template/header.jsp" />
+	<jsp:include page="/WEB-INF/template/header.jsp" />
 	<div id="container">
 
 		<div id="content">
@@ -39,6 +39,6 @@
 			
 		</div>
 	</div>
-	<jsp:include page="/template/footer.jsp" />
+	<jsp:include page="/WEB-INF/template/footer.jsp" />
 </body>
 </html>
