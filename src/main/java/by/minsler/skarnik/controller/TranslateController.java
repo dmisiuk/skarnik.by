@@ -30,30 +30,38 @@ public class TranslateController extends HttpServlet {
 		String text = request.getParameter("text");
 		String strict = request.getParameter("strict");
 		logger.info("translate for " + text + "; strict: " + strict);
-		if (text != null && !text.trim().equals("")) {
+		String letter = request.getParameter("letter");
+		if (letter != null && !letter.trim().equals("")) {
+			List<Key> list = akd.getKey(letter);
+			int size = list.size();
+			if (size > 1) {
+				request.setAttribute("list", list);
+			}
 
-			if (strict != null) {
-				Key key = akd.getKeyStrict(text);
-				if (key != null) {
-					Article article = akd.getArticleByKeyId(key.getId());
-					Def def = akd.getDef(article.getDefId());
-					request.setAttribute("keyText", key.getText());
-					request.setAttribute("defText", def.getText());
-				}
+		} else if (text != null && !text.trim().equals("")) {
+
+			Key key = akd.getKeyStrict(text);
+			if (key != null) {
+				Article article = akd.getArticleByKeyId(key.getId());
+				Def def = akd.getDef(article.getDefId());
+				request.setAttribute("keyText", key.getText());
+				request.setAttribute("defText", def.getText());
 			} else {
-				text = text.trim();
-				List<Key> list = akd.getKey(text);
-				int size = list.size();
-				logger.info("size of list of key : " + size);
-				if (size == 0) {
-				} else if (list.size() == 1) {
-					Key key = list.get(0);
-					Article article = akd.getArticleByKeyId(key.getId());
-					Def def = akd.getDef(article.getDefId());
-					request.setAttribute("keyText", key.getText());
-					request.setAttribute("defText", def.getText());
-				} else {
-					request.setAttribute("list", list);
+				if (strict == null) {
+					text = text.trim();
+					List<Key> list = akd.getKey(text);
+					int size = list.size();
+					logger.info("size of list of key : " + size);
+					if (size == 0) {
+					} else if (list.size() == 1) {
+						key = list.get(0);
+						Article article = akd.getArticleByKeyId(key.getId());
+						Def def = akd.getDef(article.getDefId());
+						request.setAttribute("keyText", key.getText());
+						request.setAttribute("defText", def.getText());
+					} else {
+						request.setAttribute("list", list);
+					}
 				}
 			}
 		}

@@ -22,8 +22,8 @@ body{
 
 #content{
 	z-index: 0;
-	padding-bottom: 40px;
-	padding-top: 40px;
+	padding-bottom: 100px;
+	padding-top: 60px;
 	padding-left: 20px;
 	padding-right: 20px;
 }
@@ -45,9 +45,10 @@ body{
 	clear: both;
 	position: relative;
 	z-index: 10;
-	height: 40px;
-	margin-top: -40px;
-	text-align: center;
+	height: 80px;
+	margin-top: -80px;
+	margin-left:40px;
+	text-align: left;
 	font-family: "Open Sans", "lucida grande", "Segoe UI", arial, verdana, "lucida sans unicode", tahoma, sans-serif;
 	font-size: 13px;
 	color: ##767676;
@@ -55,10 +56,12 @@ body{
 
 
 #search_tab{
-	text-align: center;
+	text-align: left;
+	margin-left: 20px;
 }
 
 #logo{
+	text-decoration:none;
 	color: red;
 	font-size: 16px;
 	font-style: italic;
@@ -67,8 +70,8 @@ body{
 }
 
 #result{
-	margin-left: 50px;
-	margin-top: 50px;
+	margin-left: 20px;
+	margin-top: 20px;
 	font-family: sans-serif;
 }
 .origin{
@@ -80,8 +83,8 @@ body{
 
 
 div.article{
-	margin-left: 50px;
-	margin-top: 50px;
+	margin-left: 20px;
+	margin-top: 35px;
 }
 
 .boldertext{

@@ -5,8 +5,10 @@
 <!doctype html>
 <html>
 <head>
-	<title>Перевод</title>
+	<title>«${param.text}» по-белорусски | Skarnik — русско-белорусский словарь</title>
 	<meta charset="utf-8">
+	<meta name="description" content="Перевод слова «${param.text}» с русского на белорусский язык. Перевести со Скарником легко и быстро!" />
+	<meta name="keywords" content="${param.text}" />
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -17,11 +19,16 @@
 		<div id="content">
 		
 				<div id="search_tab">
-					<form  action="translate"> 
-						<span id="logo"> SKARNIK</span>
-						<input type="text" name="text" value="${param.text}" size="70">
-						<input type="submit" value="перевести">
-					</form>
+				<form  action="translate"> 
+					<a href="index.jsp"><img src="img/logo.gif" /></a>
+				
+					<!-- <a id="logo" href="index.jsp">SKARNIK</a>-->
+					<br>
+					<input type="text" name="text" value="${param.text}" size="50">
+					<input type="submit" value="перевести">
+					<br>
+					Рус > Бел
+				</form>
 				</div>
 			<div id="result">
 				<%
@@ -31,7 +38,7 @@
 							String text = key.getText();
 				%>
 							<div class="strictlink">
-								<a href="translate?text=<%=text%>&strict=yes>"><%=text%></a>
+								<a href="translate?text=<%=text%>&strict=yes"><%=text%></a>
 							</div>
 				<%
 							}

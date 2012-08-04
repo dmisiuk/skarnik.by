@@ -39,6 +39,9 @@
 			
 		</div>
 	</div>
-	<jsp:include page="/WEB-INF/template/footer.jsp" />
+	<%--  --%><jsp:include page="/WEB-INF/template/footer.jsp" />
+	<div id="footer">
+		<a href="index.jsp" title="на главную">skarnik.by</a>
+	</div>
 </body>
 </html>

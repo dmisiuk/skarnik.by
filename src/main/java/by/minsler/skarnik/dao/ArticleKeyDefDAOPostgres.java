@@ -27,7 +27,7 @@ public class ArticleKeyDefDAOPostgres implements ArticleKeyDefDAO {
 	private String getArticleQuery = "SELECT * FROM article WHERE id = ?";
 	private String getArticleByKeyIdQuery = "SELECT * FROM article WHERE key_id = ?";
 	private String getKeyQuery = "SELECT * FROM key WHERE id = ?";
-	private String getKeyByNameQuery = "SELECT * FROM key WHERE text ilike ? limit 15";
+	private String getKeyByNameQuery = "SELECT * FROM key WHERE text ilike ?";
 	private String getKeyStrictQuery = "SELECT * FROM key WHERE text=?";
 	private String getDefQuery = "SELECT * FROM def WHERE id = ?";
 	private PreparedStatement addArticleStatement;
