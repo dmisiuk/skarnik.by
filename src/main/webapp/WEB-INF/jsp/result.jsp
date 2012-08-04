@@ -10,8 +10,9 @@
 	<meta name="description" content="Перевод слова «${param.text}» с русского на белорусский язык. Перевести со Скарником легко и быстро!" />
 	<meta name="keywords" content="${param.text}" />
 	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="js/javascript.js" ></script>
 </head>
-<body>
+<body onload="init();">
 	<jsp:include page="/WEB-INF/template/header.jsp" />
 	<div id="container">
 	
@@ -24,7 +25,7 @@
 				
 					<!-- <a id="logo" href="index.jsp">SKARNIK</a>-->
 					<br>
-					<input type="text" name="text" value="${param.text}" size="50">
+					<input type="text" name="text" value="${param.text}" size="50" id="complete-field" onkeyup="doCompletion();">
 					<input type="submit" value="перевести">
 					<br>
 					Рус > Бел
