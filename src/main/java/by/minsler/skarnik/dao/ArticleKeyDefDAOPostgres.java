@@ -28,6 +28,7 @@ public class ArticleKeyDefDAOPostgres implements ArticleKeyDefDAO {
 	private String getArticleByKeyIdQuery = "SELECT * FROM article WHERE key_id = ?";
 	private String getKeyQuery = "SELECT * FROM key WHERE id = ?";
 	private String getKeyByNameQuery = "SELECT * FROM key WHERE text ilike ?";
+	private String getKeyByNameLimitQuery = "SELECT * FROM key WHERE text ilike ? limit 10 ";
 	private String getKeyStrictQuery = "SELECT * FROM key WHERE text=?";
 	private String getDefQuery = "SELECT * FROM def WHERE id = ?";
 	private PreparedStatement addArticleStatement;
@@ -36,6 +37,7 @@ public class ArticleKeyDefDAOPostgres implements ArticleKeyDefDAO {
 	private PreparedStatement addKeyStatement;
 	private PreparedStatement getKeyStatement;
 	private PreparedStatement getKeyByNameStatement;
+	private PreparedStatement getKeyByNameLimitStatement;
 	private PreparedStatement getKeyStrictStatement;
 	private PreparedStatement addDefStatement;
 	private PreparedStatement getDefStatement;
@@ -57,6 +59,8 @@ public class ArticleKeyDefDAOPostgres implements ArticleKeyDefDAO {
 			getKeyStatement = connection.prepareStatement(getKeyQuery);
 			getKeyByNameStatement = connection
 					.prepareStatement(getKeyByNameQuery);
+			getKeyByNameLimitStatement = connection
+					.prepareStatement(getKeyByNameLimitQuery);
 			getKeyStrictStatement = connection
 					.prepareStatement(getKeyStrictQuery);
 
@@ -250,5 +254,26 @@ public class ArticleKeyDefDAOPostgres implements ArticleKeyDefDAO {
 		}
 
 		return key;
+	}
+
+	@Override
+	public List<Key> getKeyLimit(String text) {
+		ArrayList<Key> list = new ArrayList<Key>();
+		String pattern = text + "%";
+		try {
+			getKeyByNameLimitStatement.setString(1, pattern);
+			ResultSet result = getKeyByNameLimitStatement.executeQuery();
+			while (result.next()) {
+				Key key = new Key();
+				key.setId(result.getInt("id"));
+				key.setText(result.getString("text"));
+				list.add(key);
+			}
+
+		} catch (SQLException e) {
+			logger.error("getKey from db by name pattern.limit : " + e);
+		}
+
+		return list;
 	}
 }

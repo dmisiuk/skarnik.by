@@ -20,6 +20,8 @@ public interface ArticleKeyDefDAO {
 
 	List<Key> getKey(String text);
 
+	List<Key> getKeyLimit(String text);
+
 	int addArticle(Article article);
 
 	Article getArticle(int id);

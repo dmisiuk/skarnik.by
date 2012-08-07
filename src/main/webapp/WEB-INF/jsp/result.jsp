@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="css/style.css">
 	<script type="text/javascript" src="js/javascript.js" ></script>
 </head>
-<body onload="init();">
+<body onload="init();" onkeydown="if(event.keyCode==38){ alert('up');}else if(event.keyCode==40){alert('down');}">
 	<jsp:include page="/WEB-INF/template/header.jsp" />
 	<div id="container">
 	
@@ -25,10 +25,20 @@
 				
 					<!-- <a id="logo" href="index.jsp">SKARNIK</a>-->
 					<br>
-					<input type="text" name="text" value="${param.text}" size="50" id="complete-field" onkeyup="doCompletion();">
-					<input type="submit" value="перевести">
+					<input type="text" name="text" value="${param.text}" size="50" id="complete-field" onkeyup="doCompletion();" autocomplete="off" onclick="this.select();">
+					<input id="button-translate"  type="submit" value="перевести">
 					<br>
 					Рус > Бел
+					<table>
+						<tbody>
+						 	<tr>
+							<td id="auto-row" colspan="2">
+       							<table id="complete-table">
+       							</table>
+							</td> 
+							</tr>
+						</tbody>
+					</table>
 				</form>
 				</div>
 			<div id="result">
