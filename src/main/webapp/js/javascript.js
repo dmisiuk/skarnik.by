@@ -1,18 +1,30 @@
 var req;
 var isIE;
 var completeField;
-var completeTable;
 var autoRow;
+var completeCheatList;
+var ESCAPE_KEY = 27;
+var Down_KEY = 40;
+var UP_KEY = 38;
+var nextId = 0;
+var currentListItemId = 0;
 
 function init() {
-    completeField = document.getElementById("complete-field");
-    completeTable = document.getElementById("complete-table");
-    autoRow = document.getElementById("auto-row");
-    completeTable.style.top = getElementY(autoRow) + "px";
+    completeField = document.getElementById("translate-input-form");
+    completeCheatList = document.getElementById("cheat-list");
+
 }
 
 function doCompletion() {
-        var url = "autocomplete?action=complete&id=" + completeField.value;
+		var keyCode = event.keyCode;
+		switch (keyCode) {
+			case(ESCAPE_KEY):
+			case(Down_KEY):
+			case(UP_KEY):
+				return;
+				break;
+		}
+		var url = "autocomplete?action=complete&id=" + completeField.value;
         req = initRequest();
         req.open("GET", url, true);
         req.onreadystatechange = callback;
@@ -32,8 +44,7 @@ function initRequest() {
 }
 
 function callback() {
-	
-	clearTable();
+	clearCheatList();
 	
 	
 	if (req.readyState == 4) {
@@ -46,29 +57,24 @@ function callback() {
 
 function appendKey(keyText) {
 
-    var row;
-    var cell;
+    var listItem;
     var linkElement;
 
     if (isIE) {
-        completeTable.style.display = 'block';
-        row = completeTable.insertRow(completeTable.rows.length);
-        cell = row.insertCell(0);
+//        completeTable.style.display = 'block';
+//        row = completeTable.insertRow(completeTable.rows.length);
+//        cell = row.insertCell(0);
     } else {
-        completeTable.style.display = 'table';
-        row = document.createElement("tr");
-        cell = document.createElement("td");
-        row.appendChild(cell);
-        completeTable.appendChild(row);
+        completeCheatList.style.display = 'block';
+        listItem = document.createElement("li");
+        completeCheatList.appendChild(listItem);
     }
 
-    cell.className = "popupCell";
-
     linkElement = document.createElement("a");
-    linkElement.className = "popupItem";
+    linkElement.id = "listItem" + ++nextId;
     linkElement.setAttribute("href", "translate?strict=yes&text=" + keyText);
     linkElement.appendChild(document.createTextNode(keyText));
-    cell.appendChild(linkElement);
+    listItem.appendChild(linkElement);
 }
 //
 //
@@ -87,12 +93,15 @@ function getElementY(element){
     return targetTop;
 }
 //
-function clearTable() {
-    if (completeTable.getElementsByTagName("tr").length > 0) {
-        completeTable.style.display = 'none';
-        for (loop = completeTable.childNodes.length -1; loop >= 0 ; loop--) {
-            completeTable.removeChild(completeTable.childNodes[loop]);
+
+function clearCheatList() {
+    if (completeCheatList.getElementsByTagName("li").length > 0) {
+    	completeCheatList.style.display = 'none';
+        for (loop = completeCheatList.childNodes.length -1; loop >= 0 ; loop--) {
+        	completeCheatList.removeChild(completeCheatList.childNodes[loop]);
         }
+        nextId = 0;
+        currentListItemId = 0;
     }
 }
 //
@@ -107,8 +116,6 @@ function parseMessages(responseXML) {
         var keys = responseXML.getElementsByTagName("keys")[0];
 
         if (keys.childNodes.length > 0) {
-            completeTable.setAttribute("bordercolor", "black");
-            completeTable.setAttribute("border", "1");
 
             for (loop = 0; loop < keys.childNodes.length; loop++) {
                 var key = keys.childNodes[loop];
@@ -119,4 +126,61 @@ function parseMessages(responseXML) {
             }
         }
     }
+}
+
+function keyControl() {
+	var keyCode = event.keyCode;
+	//console.log(" keycode: " + keyCode);
+	switch(keyCode){
+		case ESCAPE_KEY:
+			clearCheatList();
+			break;
+		case Down_KEY:
+			selectNextListItem();
+			break;
+		case UP_KEY:
+			selectPreviousListItem();
+			break;
+		default:
+			break;
+	}
+}
+
+function selectNextListItem() {
+	unselectCurrentListItem();
+	var listItem = document.getElementById('listItem' + getNextListItemId());
+	selectListItem(listItem);
+}
+
+function selectPreviousListItem() {
+	unselectCurrentListItem();
+	var listItem = document.getElementById('listItem' + getPreviousListItemId());
+	selectListItem(listItem);
+}
+
+function getNextListItemId(){
+	if(currentListItemId >= nextId){
+		currentListItemId =0;
+	}
+	return ++currentListItemId;
+}
+
+function getPreviousListItemId(){
+	if(currentListItemId <= 1){
+		currentListItemId = nextId+1;
+	}
+	return --currentListItemId;
+}
+
+function unselectCurrentListItem(){
+	if(currentListItemId == 0) return;
+	var currentListItem = document.getElementById('listItem' + currentListItemId);
+	currentListItem.className = '';
+}
+
+function selectListItem(listItem){
+	listItem.className='selected';
+	var text = listItem.childNodes[0].nodeValue;
+	//console.log(text);
+	completeField.value = text;
 }

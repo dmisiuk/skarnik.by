@@ -24,7 +24,7 @@ body{
 	z-index: 0;
 	padding-bottom: 100px;
 	padding-top: 60px;
-	padding-left: 20px;
+	padding-left: 40px;
 	padding-right: 20px;
 }
 
@@ -55,10 +55,87 @@ body{
 }
 
 
-#search_tab{
-	text-align: left;
-	margin-left: 20px;
-}
+    div#search {
+        margin-top: 0px;
+        margin-left: 0px;
+        width: 450px;
+        height: 21px;
+
+    }
+
+    div#result {
+        margin-left: 0;
+        margin-top:50px;
+
+    }
+
+
+    div#searh-line{
+        width: 100%;
+        height: 100%;
+    }
+
+    form#main-form{
+        width: 100%;
+        height: 100%;
+    }
+    div#search-tab {
+        position: relative;
+        margin: 0;
+        width: 350px;
+    }
+
+    div#search-button {
+        position: relative;
+        top:-21px;
+        left: 350px;
+        margin: 0;
+        width: 100px;
+        text-align: center;
+    }
+
+    input#translate-input-form{
+        width: 100%;
+        height: 100%;
+    }
+
+    input#translate-button{
+        width: 85%;
+        height: 100%;
+        background-color: #f5f5dc;
+    }
+    div#cheat {
+        /*display:block;*/
+        position: relative;
+        border-style: solid;
+        border-color: #a9a9a9;
+        border-width: thin;
+        width: 352px;
+        background-color: #f0ffff;
+        z-index: 2;
+    }
+
+    ul {
+        margin: 0;
+        padding-left: 0;
+        list-style: none;
+    }
+
+    li a {
+        text-decoration: none;
+    	margin-right: auto;
+        margin-left: auto;
+        padding-top: 3px;
+	    display:block;
+	    color: black;
+        padding-left: 10px;
+
+    }
+
+    .selected ,li a:hover {
+        background-color: #f5f5dc;
+        font-weight: bold;
+    }
 
 #logo{
 	text-decoration:none;

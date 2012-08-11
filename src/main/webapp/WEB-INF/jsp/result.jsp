@@ -12,35 +12,42 @@
 	<link rel="stylesheet" href="css/style.css">
 	<script type="text/javascript" src="js/javascript.js" ></script>
 </head>
-<body onload="init();" onkeydown="if(event.keyCode==38){ alert('up');}else if(event.keyCode==40){alert('down');}">
+<body onload="init();" >
 	<jsp:include page="/WEB-INF/template/header.jsp" />
 	<div id="container">
 	
 	
 		<div id="content">
+		<a href="index.jsp"><img src="img/logo.gif" /></a>
 		
-				<div id="search_tab">
-				<form  action="translate"> 
-					<a href="index.jsp"><img src="img/logo.gif" /></a>
-				
-					<!-- <a id="logo" href="index.jsp">SKARNIK</a>-->
-					<br>
-					<input type="text" name="text" value="${param.text}" size="50" id="complete-field" onkeyup="doCompletion();" autocomplete="off" onclick="this.select();">
-					<input id="button-translate"  type="submit" value="перевести">
-					<br>
-					Рус > Бел
-					<table>
-						<tbody>
-						 	<tr>
-							<td id="auto-row" colspan="2">
-       							<table id="complete-table">
-       							</table>
-							</td> 
-							</tr>
-						</tbody>
-					</table>
-				</form>
-				</div>
+		<div id="search" >
+    	<div id="searh-line" >
+	    	<form id="main-form" action="translate">
+		        <div id="search-tab" onkeydown="keyControl();">
+		        	<input id="translate-input-form" type="text" value="${param.text}" 
+		        			name="text" onkeyup="doCompletion();" autocomplete="off" onblur="//clearCheatList();" ></div>
+		        <div id="search-button"><input id="translate-button" type="submit" value="перевести"></div>
+		    </form>
+	    </div>
+		    <div id="cheat">
+		        <ul id="cheat-list">
+		        </ul>
+		    </div>
+
+		</div>
+		
+		<table>
+			<tbody>
+			 	<tr>
+					<td id="auto-row" colspan="2">
+	   					<table id="complete-table">
+	 					</table>
+					</td> 
+				</tr>
+			</tbody>
+		</table>
+		
+
 			<div id="result">
 				<%
 					List<Key> list = (List<Key>) request.getAttribute("list");
